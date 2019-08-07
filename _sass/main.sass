@@ -25,14 +25,12 @@ $family-sans-serif: "Helvetica", "Arial", sans-serif
 
 // 4. Import the rest of Bulma
 
-
-@import "../node_modules/bulma/bulma.sass"
-@import "bulma-extensions.min.css"
-@import "bulma-slider.min.css"
+@import "../node_modules/bulma/bulma"
+@import "../node_modules/bulma-extensions/src/sass/index"
+@import "../node_modules/bulma-extensions/bulma-steps/src/sass/index"
 
 .step-content-wrapper
-    min-height: 250px
-
+    min-height: 200px
 
 .step-content input
     width: initial
