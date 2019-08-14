@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>車禍公道伯－當事人受傷</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <section class="hero is-small is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <a href="index.html">
+              <h1 class="title is-2">
+                車禍公道伯
+              </h1>
+            </a>
+            <h2 class="subtitle is-4">
+              車禍賠償金試算系統－當事人受傷害
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8-desktop is-offset-2-desktop">
+          <div class="content">
+            <!-- <p class="is-8-desktop title is-3 is-spaced">請依序填入下列欄位</p> -->
+            <div class="steps" id="stepsEl">
+              <div class="step-item is-active">
+                <div class="step-marker">1</div>
+                <div class="step-details">
+                  <p class="step-title">車輛現值計算</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-marker">2</div>
+                <div class="step-details">
+                  <p class="step-title">不能工作之損失</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-marker">3</div>
+                <div class="step-details">
+                  <p class="step-title">失能給付</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-marker">4</div>
+                <div class="step-details">
+                  <p class="step-title">其他資訊
+                  </p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-marker">5</div>
+                <div class="step-details">
+                  <p class="step-title">結算結果</p>
+                </div>
+              </div>
+              <div class="steps-content step-content-wrapper">
+                <!-- 車輛現值計算 -->
+                <div class="step-content has-text-centered is-active">
+                  <!-- 車輛種類 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">車輛種類</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-text-centered-mobile">
+                          <div class="select" id="">
+                            <select id="vehicle-type">
+                              <option disabled value="0">請選擇車輛種類</option>
+                              <option value="1">機車</option>
+                              <!-- TODO 把 selected 換回 0 -->
+                              <option value="2" selected>非營業用汽車</option>
+                              <option value="3">其他車輛種類</option>
+                              <option value="4">無車輛損害</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 新品價值 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label">
+                      <label class="label">新品價值</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-icon has-icon-right has-text-centered-mobile">
+                          <input class="input" value="200000" type="number" name="" id="vehicle-start-value"
+                            placeholder="" data-validate="require">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 最終殘值 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label">
+                      <label class="label">最終殘值</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-icon has-icon-right has-text-centered-mobile">
+                          <input class="input" value="50000" type="number" name="" id="vehicle-end-value" placeholder=""
+                            data-validate="require">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 已使用年 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">已使用年</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-icon has-icon-right has-text-centered-mobile">
+                          <output for="years-used">3 年</output>
+                          <input class="slider has-output has-output-tooltip" id="years-used" data-validate="require"
+                            min="0" max="5" value="3" step="1" type="range">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 不能工作之損失 -->
+                <div class="step-content has-text-centered">
+                  <!-- 平均每月收入 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">平均每月收入</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-text-centered-mobile">
+                          <input class="input" value="45000" name="" id="income-avg" type="number" placeholder=""
+                            data-validate="require">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 當月天數 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">當月天數</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-icon has-icon-right has-text-centered-mobile">
+                          <input class="input" value="31" type="number" name="" id="days-in-month" placeholder=""
+                            data-validate="require">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 不能工作之天數 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">不能工作之天數</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-icon has-icon-right has-text-centered-mobile">
+                          <input class="input" value="10" type="number" name="" id="rest-days" placeholder=""
+                            data-validate="require">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 失能給付 -->
+                <div class="step-content has-text-centered">
+                  <!-- 失能等級 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">失能等級</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-text-centered-mobile">
+                          <div class="select" id="">
+                            <select id="disabled-level">
+                              <!-- TODO 換回預設 -->
+                              <option disabled value>失能等級</option>
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option valur="3">3</option>
+                              <option valur="4">4</option>
+                              <option valur="5">5</option>
+                              <option valur="6">6</option>
+                              <option valur="7">7</option>
+                              <option valur="8">8</option>
+                              <option valur="9">9</option>
+                              <option valur="10">10</option>
+                              <option valur="11">11</option>
+                              <option valur="12">12</option>
+                              <option valur="13" selected>13</option>
+                              <option valur="14">14</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 平均日投保薪資 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">平均日投保薪資</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-text-centered-mobile">
+                          <input class="input" value="1500" name="" id="insured-salary" type="number" placeholder=""
+                            data-validate="require" min="0">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 現在年齡 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">現在年齡</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control has-text-centered-mobile">
+                          <input class="input" value="55" name="" id="current-age" type="number" placeholder=""
+                            data-validate="require" min="0" max="120">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 其他欄位（精神慰撫金） -->
+                <div class="step-content has-text-centered">
+                  <!-- 原告 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">原告背景資訊</label>
+                    </div>
+                    <div class="field-body">
+                      <!-- 學歷 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="accuser-edu">
+                              <option disabled value>學歷</option>
+                              <option value="0">小學</option>
+                              <option value="1" selected>國中</option>
+                              <option value="2">高中</option>
+                              <option value="3">大學</option>
+                              <option value="4">碩士</option>
+                              <option value="5">博士</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 年齡 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="accuser-age">
+                              <option disabled value>年齡</option>
+                              <option value="0">0~20</option>
+                              <option value="1">20~40</option>
+                              <option value="2" selected>40~65</option>
+                              <option value="3">65~80</option>
+                              <option value="4">80 以上</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 職業 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="accuser-occupation">
+                              <option disabled value>職業</option>
+                              <option value="0">無業</option>
+                              <option value="0">家管</option>
+                              <option value="0">駕駛</option>
+                              <option value="0">農漁牧</option>
+                              <option value="0">業務</option>
+                              <option value="0" selected>派遣員工</option>
+                              <option value="0">其他藍領勞工</option>
+                              <option value="1">軍公教</option>
+                              <option value="1">科技業工程師</option>
+                              <option value="1">金融業</option>
+                              <option value="1">主管職</option>
+                              <option value="1">其他白領勞工</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 年收入 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="accuser-annual-rev">
+                              <option disabled value>年收入區間</option>
+                              <option value="0">無</option>
+                              <option value="1">50 萬以下</option>
+                              <option value="2" selected>50~120 萬</option>
+                              <option value="3">120~200 萬</option>
+                              <option value="4">200~400 萬</option>
+                              <option value="5">400 萬以上</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 房產或其他投資 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="accuser-investment">
+                              <option disabled value>房產或其他投資</option>
+                              <option value="0">無</option>
+                              <option value="1" selected>100 萬以下</option>
+                              <option value="2">100~300 萬</option>
+                              <option value="3">300~700 萬</option>
+                              <option value="4">700 萬以上</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 被告 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">被告背景資訊</label>
+                    </div>
+                    <div class="field-body">
+                      <!-- 學歷 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="defendant-edu">
+                              <option disabled value>學歷</option>
+                              <option value="0">小學</option>
+                              <option value="1">國中</option>
+                              <option value="2">高中</option>
+                              <option value="3" selected>大學</option>
+                              <option value="4">碩士</option>
+                              <option value="5">博士</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 年齡 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="defendant-age">
+                              <option disabled value>年齡</option>
+                              <option value="0">0~20</option>
+                              <option value="1">20~40</option>
+                              <option value="2" selected>40~65</option>
+                              <option value="3">65~80</option>
+                              <option value="4">80 以上</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 職業 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="defendant-occupation">
+                              <option disabled value>職業</option>
+                              <option value="0">無業</option>
+                              <option value="0">家管</option>
+                              <option value="0">駕駛</option>
+                              <option value="0">農漁牧</option>
+                              <option value="0">業務</option>
+                              <option value="0">派遣員工</option>
+                              <option value="0">其他藍領勞工</option>
+                              <option value="1">軍公教</option>
+                              <option value="1">科技業工程師</option>
+                              <option value="1">金融業</option>
+                              <option value="1" selected>主管職</option>
+                              <option value="1">其他白領勞工</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 年收入 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="defendant-annual-rev">
+                              <option disabled value>年收入區間</option>
+                              <option value="0">無</option>
+                              <option value="1">50 萬以下</option>
+                              <option value="2">50~120 萬</option>
+                              <option value="3">120~200 萬</option>
+                              <option value="4" selected>200~400 萬</option>
+                              <option value="5">400 萬以上</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 房產或其他投資 -->
+                      <div class="field">
+                        <div class="control has-text-centered-mobile is-grouped">
+                          <div class="select" id="">
+                            <select id="defendant-investment">
+                              <option disabled value>房產或其他投資</option>
+                              <option value="0">無</option>
+                              <option value="1">100 萬以下</option>
+                              <option value="2">100~300 萬</option>
+                              <option value="3" selected>300~700 萬</option>
+                              <option value="4">700 萬以上</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 過失比例 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">過失比例</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="percentage_wrapper control has-text-centered-mobile is-grouped">
+                          <div class="accuser percentage_input">
+                            原告： <input id="fault_percentage_accuser" value="30" class="input" type="number"
+                              placeholder="原告過失比例"> ％
+                          </div>
+                          <br>
+                          <div class="defendant percentage_input">
+                            被告： <input id="fault_percentage_defendant" value="70" class="input" type="number"
+                              placeholder="被告過失比例">
+                            ％
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 關鍵字 -->
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">關鍵字</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class=" control has-text-centered-mobile is-grouped">
+                          <input id="keywords" class="input" type="text" placeholder="如：計程車 重型機車...等" value="">
+                          <br>
+                          <div class="is-small notes">（多個關鍵字請用空白隔開）</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 結果 -->
+                <div class="step-content has-text-centered">
+                  <!-- Results -->
+                  <p class="title is-3">預測賠償金金額為：<text id="money_result">6666</text> 元</p>
+                  <br>
+                  <p class="title is-5">註：總額為加總乘上（1-原告負擔比例）</p>
+                  <!-- table -->
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>項目</th>
+                        <th>預估金額</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>車輛現值</th>
+                        <td id="result_vehicle_pv"></td>
+                      </tr>
+                      <tr>
+                        <th>不能工作之損失</th>
+                        <td id="result_loss_from_not_working"></td>
+                      </tr>
+                      <tr>
+                        <th>失能給付</th>
+                        <td id="result_disabled_compensation"></td>
+                      </tr>
+                      <tr>
+                        <th>撫養給付</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>精神慰撫金</th>
+                        <td id="result_solatium"></td>
+                      </tr>
+                      <tr>
+                        <th>加總</th>
+                        <td id="result_sum"></td>
+                      </tr>
+                      <tr>
+                        <th>負擔比例</th>
+                        <td id="result_accuser_percentage"></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  <a href="" class="button is-medium is-info">自動生成起訴狀 📜</a>
+                </div>
+              </div>
+              <div class="steps-actions">
+                <div class="steps-action">
+                  <a href="#" data-nav="previous" class="button is-light">Previous</a>
+                </div>
+                <div class="steps-action">
+                  <a href="#" data-nav="next" class="button is-light">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <footer class="footer has-text-centered">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-8-desktop is-offset-2-desktop">
+          <p>
+            <strong class="has-text-weight-semibold">
+              <a href="">車禍公道伯 v0.0.1</a>
+            </strong>
+          </p>
+          <p style="margin-top: 1rem;">
+            <a href="https://github.com/ankycheng/damages-calculator">
+              <!-- <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24"> -->
+              <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                width="32" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                </path>
+              </svg>
+              <br>
+              <text>GitHub repository</text>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
+<!-- <script src="../node_modules/bulma-extensions/dist/js/bulma-extensions.js"></script>
+<script src="../node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="lib/bulma-extensions.js"></script>
+<!-- <script src="lib/bulma-steps.js"></script> -->
+<script src="lib/bulma-steps-patch.js"></script>
+<script type="text/javascript" src="lib/main.js"></script>

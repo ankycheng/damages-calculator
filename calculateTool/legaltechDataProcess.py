@@ -13,8 +13,8 @@ import re
 
 
 #自用字典
-jieba.load_userdict("/Users/benbilly3/Desktop/Legaltech/MoreData/myaccidentdict.txt")
-jieba.load_userdict("/Users/benbilly3/Desktop/Legaltech/MoreData/mycostdict.txt")
+jieba.load_userdict("statics/datas/myaccidentdict.txt")
+jieba.load_userdict("statics/datas/mycostdict.txt")
 
 #進入資料庫
 def enterLocalMD(Database,collection):
@@ -169,7 +169,7 @@ def jiebCutToList(text):
 #過濾停用字,
 #法律斷詞轉成list
 stopWords=[]
-with open('/Users/benbilly3/Desktop/Legaltech/MoreData/stopWords.txt', 'r', encoding='UTF-8') as file:
+with open('statics/datas/stopWords.txt', 'r', encoding='UTF-8') as file:
     for data in file.readlines():
         data = data.strip()
         stopWords.append(data)

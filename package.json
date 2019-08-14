@@ -71,6 +71,7 @@
   },
   "version": "0.0.3",
   "dependencies": {
-    "bulma-extensions": "^6.2.7"
+    "bulma-extensions": "^6.2.7",
+    "jquery": "^3.4.1"
   }
 }

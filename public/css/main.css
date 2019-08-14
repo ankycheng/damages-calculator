@@ -14316,14 +14316,23 @@ input[type=range].slider {
         font-size: 1.8rem;
         font-weight: 600; }
 
-.step-content-wrapper {
-  min-height: 200px; }
+.footer {
+  padding: 1rem 1.5rem 1rem; }
+
+.section {
+  min-height: calc(100vh - 135px - 127px); }
+
+label.label {
+  text-align: center; }
+
+a.is-dead, a.is-damaged {
+  margin: 0px 10px; }
 
 .step-content input {
   width: initial; }
 
 #years-used.slider {
-  margin: initial;
+  margin: initials;
   max-width: 50vw; }
   @media screen and (max-width: 768px) {
     #years-used.slider {
@@ -14332,3 +14341,19 @@ input[type=range].slider {
 .control > text {
   verticle-align: text-top;
   font-size: 1.2rem; }
+
+.percentage_wrapper {
+  display: flex; }
+  @media screen and (max-width: 768px) {
+    .percentage_wrapper {
+      justify-content: center; } }
+
+.percentage_input {
+  display: flex;
+  align-items: center; }
+  .percentage_input > input {
+    margin: 0px 5px;
+    width: 150px; }
+
+.notes {
+  font-size: 14px; }
