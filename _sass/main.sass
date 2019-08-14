@@ -29,14 +29,24 @@ $family-sans-serif: "Helvetica", "Arial", sans-serif
 @import "../node_modules/bulma-extensions/src/sass/index"
 @import "../node_modules/bulma-extensions/bulma-steps/src/sass/index"
 
-.step-content-wrapper
-    min-height: 200px
+.footer
+    padding: 1rem 1.5rem 1rem
+
+.section
+    min-height: calc(100vh - 135px - 127px)
+
+
+label.label
+    text-align: center
+
+a.is-dead, a.is-damaged
+    margin: 0px 10px
 
 .step-content input
     width: initial
 
 #years-used.slider
-    margin: initial
+    margin: initials
     max-width: 50vw
     +mobile
         margin: auto
@@ -44,3 +54,18 @@ $family-sans-serif: "Helvetica", "Arial", sans-serif
 .control>text
     verticle-align: text-top
     font-size: 1.2rem
+
+.percentage_wrapper
+    display: flex
+    +mobile
+        justify-content: center
+
+.percentage_input
+    display: flex
+    align-items: center
+    >input
+        margin: 0px 5px
+        width: 150px
+
+.notes
+    font-size: 14px

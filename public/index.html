@@ -1,647 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>車禍公道伯</title>
-  <link rel="stylesheet" href="css/main.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>車禍公道伯</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-  <section class="hero is-small is-primary">
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-8-desktop is-offset-2-desktop">
-            <h1 class="title is-2">
-              車禍公道伯
-            </h1>
-            <h2 class="subtitle is-4">
-              車禍賠償金試算系統
-            </h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-8-desktop is-offset-2-desktop">
-          <div class="content">
-            <p class="is-8-desktop title is-3 is-spaced">清依序填入下列欄位</p>
-            <div class="steps" id="stepsEl">
-              <div class="step-item is-active">
-                <div class="step-marker">1</div>
-                <div class="step-details">
-                  <p class="step-title">車輛現值計算</p>
+    <section class="hero is-small is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8-desktop is-offset-2-desktop">
+                        <h1 class="title is-2">
+                            車禍公道伯
+                        </h1>
+                        <h2 class="subtitle is-4">
+                            車禍賠償金試算系統
+                        </h2>
+                    </div>
                 </div>
-              </div>
-              <div class="step-item">
-                <div class="step-marker">2</div>
-                <div class="step-details">
-                  <p class="step-title">不能工作之損失</p>
-                </div>
-              </div>
-              <div class="step-item">
-                <div class="step-marker">3</div>
-                <div class="step-details">
-                  <p class="step-title">失能給付</p>
-                </div>
-              </div>
-              <div class="step-item">
-                <div class="step-marker">4</div>
-                <div class="step-details">
-                  <p class="step-title">撫養給付</p>
-                </div>
-              </div>
-              <div class="step-item">
-                <div class="step-marker">5</div>
-                <div class="step-details">
-                  <p class="step-title">精神慰撫金
-                  </p>
-                </div>
-              </div>
-              <div class="step-item">
-                <div class="step-marker">6</div>
-                <div class="step-details">
-                  <p class="step-title">結算結果</p>
-                </div>
-              </div>
-              <div class="steps-content step-content-wrapper">
-                <!-- 車輛現值計算 -->
-                <div class="step-content has-text-centered is-active">
-                  <!-- 車輛種類 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">車輛種類</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <div class="select" id="vehicle-type">
-                            <select>
-                              <option disabled selected value>請選擇車輛種類</option>
-                              <option>機車</option>
-                              <option>非營業用汽車</option>
-                              <option>其他車輛種類</option>
-                              <option>無車輛損害</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 新品價值 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label">
-                      <label class="label">新品價值</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-icon has-icon-right has-text-centered-mobile">
-                          <input class="input " type="value" name="" id="" placeholder="" data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 最終殘值 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label">
-                      <label class="label">最終殘值</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-icon has-icon-right has-text-centered-mobile">
-                          <input class="input" type="value" name="" id="" placeholder="" data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 已使用年 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">已使用年</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-icon has-icon-right has-text-centered-mobile">
-                          <output for="years-used">0 年</output>
-                          <input class="slider has-output has-output-tooltip" id="years-used" data-validate="require"
-                            min="0" max="5" value="0" step="1" type="range">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 不能工作之損失 -->
-                <div class="step-content has-text-centered">
-                  <!-- 平均每月收入 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">平均每月收入</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <input class="input" name="" id="" type="value" placeholder="" data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 當月天數 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">當月天數</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-icon has-icon-right has-text-centered-mobile">
-                          <input class="input" type="value" name="" id="lastname" placeholder=""
-                            data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 不能工作之天數 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">不能工作之天數</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-icon has-icon-right has-text-centered-mobile">
-                          <input class="input" type="value" name="email" id="email" placeholder=""
-                            data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 失能給付 -->
-                <div class="step-content has-text-centered">
-                  <!-- 失能等級 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">失能等級</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>失能等級</option>
-                              <option>0</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                              <option>6</option>
-                              <option>7</option>
-                              <option>8</option>
-                              <option>9</option>
-                              <option>10</option>
-                              <option>11</option>
-                              <option>12</option>
-                              <option>13</option>
-                              <option>14</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 平均日投保薪資 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">平均日投保薪資</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <input class="input" name="" id="" type="value" placeholder="" data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 現在年齡 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">現在年齡</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <input class="input" name="" id="" type="value" placeholder="" data-validate="require">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 撫養給付 -->
-                <div class="step-content has-text-centered">
-                  <!-- 子女 -->
-                  <!-- <h3>子女撫養費</h3> -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">子女（1）</label>
-                    </div>
-                    <div class="field-body">
-                      <!-- 戶籍地 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>戶籍地</option>
-                              <option>新北市</option>
-                              <option>臺北市</option>
-                              <option>桃園市</option>
-                              <option>臺中市</option>
-                              <option>臺南市</option>
-                              <option>高雄市</option>
-                              <option>宜蘭縣</option>
-                              <option>新竹縣</option>
-                              <option>苗栗縣</option>
-                              <option>彰化縣</option>
-                              <option>南投縣</option>
-                              <option>雲林縣</option>
-                              <option>嘉義縣</option>
-                              <option>屏東縣</option>
-                              <option>花蓮縣</option>
-                              <option>澎湖縣</option>
-                              <option>基隆市</option>
-                              <option>新竹市</option>
-                              <option>嘉義市</option>
-                              <option>其他</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 性別 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>性別</option>
-                              <option>男</option>
-                              <option>女</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 年紀 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <div class="control has-icon has-icon-right has-text-centered-mobile">
-                            <div class="control has-text-centered-mobile">
-                              <input class="input" name="" id="" type="value" placeholder="年紀" data-validate="require">
-                              <text>歲</text>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 長輩 -->
-                  <!-- <h3>長輩撫養費</h3> -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">長輩（1）</label>
-                    </div>
-                    <div class="field-body">
-                      <!-- 戶籍地 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>戶籍地</option>
-                              <option>新北市</option>
-                              <option>臺北市</option>
-                              <option>桃園市</option>
-                              <option>臺中市</option>
-                              <option>臺南市</option>
-                              <option>高雄市</option>
-                              <option>宜蘭縣</option>
-                              <option>新竹縣</option>
-                              <option>苗栗縣</option>
-                              <option>彰化縣</option>
-                              <option>南投縣</option>
-                              <option>雲林縣</option>
-                              <option>嘉義縣</option>
-                              <option>屏東縣</option>
-                              <option>花蓮縣</option>
-                              <option>澎湖縣</option>
-                              <option>基隆市</option>
-                              <option>新竹市</option>
-                              <option>嘉義市</option>
-                              <option>其他</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 性別 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>性別</option>
-                              <option>男</option>
-                              <option>女</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 年紀 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile">
-                          <div class="control has-icon has-icon-right has-text-centered-mobile">
-                            <div class="control has-text-centered-mobile">
-                              <input class="input" name="" id="" type="value" placeholder="年紀" data-validate="require">
-                              <text>歲</text>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 精神慰撫金 -->
-                <div class="step-content has-text-centered">
-                  <!-- 原告 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">原告</label>
-                    </div>
-                    <div class="field-body">
-                      <!-- 學歷 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>學歷</option>
-                              <option>小學</option>
-                              <option>國中</option>
-                              <option>高中</option>
-                              <option>大學</option>
-                              <option>碩士</option>
-                              <option>博士</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 年齡 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>年齡</option>
-                              <option>0~20</option>
-                              <option>20~40</option>
-                              <option>40~65</option>
-                              <option>65~80</option>
-                              <option>80 以上</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 職業 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>職業</option>
-                              <option>無業</option>
-                              <option>家管</option>
-                              <option>駕駛</option>
-                              <option>農漁牧</option>
-                              <option>業務</option>
-                              <option>派遣員工</option>
-                              <option>其他藍領勞工</option>
-                              <option>軍公教</option>
-                              <option>科技業工程師</option>
-                              <option>金融業</option>
-                              <option>主管職</option>
-                              <option>其他白領勞工</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 年收入 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>年收入區間</option>
-                              <option>無</option>
-                              <option>50 萬以下</option>
-                              <option>50~120 萬</option>
-                              <option>120~200 萬</option>
-                              <option>200~400 萬</option>
-                              <option>400 萬以上</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 房產或其他投資 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>房產或其他投資</option>
-                              <option>無</option>
-                              <option>100 萬以下</option>
-                              <option>100~300 萬</option>
-                              <option>300~700 萬</option>
-                              <option>700 萬以上</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 被告 -->
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">被告</label>
-                    </div>
-                    <div class="field-body">
-                      <!-- 學歷 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>學歷</option>
-                              <option>小學</option>
-                              <option>國中</option>
-                              <option>高中</option>
-                              <option>大學</option>
-                              <option>碩士</option>
-                              <option>博士</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 年齡 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>年齡</option>
-                              <option>0~20</option>
-                              <option>20~40</option>
-                              <option>40~65</option>
-                              <option>65~80</option>
-                              <option>80 以上</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 職業 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>職業</option>
-                              <option>無業</option>
-                              <option>家管</option>
-                              <option>駕駛</option>
-                              <option>農漁牧</option>
-                              <option>業務</option>
-                              <option>派遣員工</option>
-                              <option>其他藍領勞工</option>
-                              <option>軍公教</option>
-                              <option>科技業工程師</option>
-                              <option>金融業</option>
-                              <option>主管職</option>
-                              <option>其他白領勞工</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 年收入 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>年收入區間</option>
-                              <option>無</option>
-                              <option>50 萬以下</option>
-                              <option>50~120 萬</option>
-                              <option>120~200 萬</option>
-                              <option>200~400 萬</option>
-                              <option>400 萬以上</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 房產或其他投資 -->
-                      <div class="field">
-                        <div class="control has-text-centered-mobile is-grouped">
-                          <div class="select" id="">
-                            <select>
-                              <option disabled selected value>房產或其他投資</option>
-                              <option>無</option>
-                              <option>100 萬以下</option>
-                              <option>100~300 萬</option>
-                              <option>300~700 萬</option>
-                              <option>700 萬以上</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 結果 -->
-                <div class="step-content has-text-centered">
-                  <!-- Results -->
-                  <p class="title is-3">預測賠償金金額為：6666 元</p>
-                  <!-- table -->
-                  <table class="table is-bordered is-fullwidth">
-                    <thead>
-                      <tr>
-                        <th>項目</th>
-                        <th>預估金額</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>車輛現值</th>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th>不能工作之損失</th>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th>失能給付</th>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th>撫養給付</th>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th>精神慰撫金</th>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th>加總</th>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="steps-actions">
-                <div class="steps-action">
-                  <a href="#" data-nav="previous" class="button is-light">Previous</a>
-                </div>
-                <div class="steps-action">
-                  <a href="#" data-nav="next" class="button is-light">Next</a>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-  </section>
+    </section>
 
-  <footer class="footer has-text-centered">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-8-desktop is-offset-2-desktop">
-          <p>
-            <strong class="has-text-weight-semibold">
-              <a href="">車禍公道伯 v0.0.1</a>
-            </strong>
-          </p>
-          <p style="margin-top: 1rem;">
-            <a href="https://github.com/ankycheng/damages-calculator">
-              <!-- <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24"> -->
-              <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
-                width="32" aria-hidden="true">
-                <path fill-rule="evenodd"
-                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
-                </path>
-              </svg>
-              <br>
-              <text>GitHub repository</text>
-            </a>
-          </p>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-desktop">
+                <div class="column is-8-desktop is-offset-2-desktop">
+                    <div class="content has-text-centered">
+                        <p class="is-8-desktop title is-3 is-spaced">賠償金試算系統</p>
+                        <p class="is-8-desktop title is-5 is-spaced">請選擇原告（當事人）傷害程度</p>
+                        <a class="is-damaged button is-medium is-primary is-outlined" href="is-damaged.html">傷害</a>
+                        <a class="is-dead button is-medium is-primary is-outlined" href="is-dead.html">死亡</a>
+                    </div>
+                    <br>
+                    <div class="content has-text-centered">
+                        <p class="is-8-desktop title is-3 is-spaced">功能二</p>
+                        <p class="is-8-desktop title is-5 is-spaced">功能二附標題</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+
+    </section>
+    <footer class="footer has-text-centered">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-desktop is-offset-2-desktop">
+                    <p>
+                        <strong class="has-text-weight-semibold">
+                            <a href="">車禍公道伯 v0.0.1</a>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <a href="https://github.com/ankycheng/damages-calculator">
+                            <!-- <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24"> -->
+                            <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16"
+                                version="1.1" width="32" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                                </path>
+                            </svg>
+                            <br>
+                            <text>GitHub repository</text>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
-<!-- <script src="../node_modules/bulma-extensions/dist/js/bulma-extensions.js"></script>
-<script src="../node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.js"></script> -->
-<script src="lib/bulma-extensions.js"></script>
-<script src="lib/bulma-steps.js"></script>
-<script type="text/javascript" src="lib/main.js"></script>
