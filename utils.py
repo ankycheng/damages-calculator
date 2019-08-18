@@ -1,8 +1,27 @@
-
 import pandas as pd
+import os, sys, requests
+
+def downloadFile(url, fileName, targetPath):
+    with open(targetPath+fileName, 'wb') as f:
+        print("Downloading {}".format(fileName))
+        response = requests.get(url, stream=True)
+        total_length = response.headers.get('content-length')
+
+        if total_length is None: # no content length header
+            f.write(response.content)
+        else:
+            dl = 0
+            total_length = int(total_length)
+            for data in response.iter_content(chunk_size=4096):
+                dl += len(data)
+                f.write(data)
+                done = int(50 * dl / total_length)
+                sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )    
+                sys.stdout.flush()
+            print('download finished')
+
+
 # car='汽車種類'、new='新品價值','old'=最終殘值,'已使用年'
-
-
 def Present_value(car_type, new, old, use_year):
     # 機車
     if car_type == '1':

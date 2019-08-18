@@ -17,6 +17,37 @@ import math
 app = Flask(__name__)
 CORS(app, supports_credentials=True, resources='/*')
 
+# init project
+
+isDataExist = os.path.isfile('statics/datas/result.pickle')
+isFontExist = os.path.isfile('statics/fonts/Arial Unicode.ttf')
+
+if not isDataExist:
+    try:
+        os.mkdir('statics/datas/')
+    except Exception as e:
+        print(e)
+    resultDataUrl = 'https://temporary0.s3-ap-southeast-1.amazonaws.com/hackmmurabi/result.pickle'
+    fileName = 'result.pickle'
+    targetPath = 'statics/datas/'
+    downloadFile(resultDataUrl, fileName, targetPath)
+
+if not isFontExist:
+    try:
+        os.mkdir('statics/fonts/')
+    except Exception as e:
+        print(e)
+    fontUrl = 'https://temporary0.s3-ap-southeast-1.amazonaws.com/hackmmurabi/Arial+Unicode.ttf'
+    fileName = 'Arial Unicode.ttf'
+    targetPath = 'statics/fonts/'
+    downloadFile(fontUrl, fileName, targetPath)
+
+x = pd.read_pickle("statics/datas/result.pickle")
+t1 = x['jd_money'].values.tolist()
+t2 = x['solatium_request'].values.tolist()
+x['jd_solatium_predict'] = [b*0.8 if a >= b else a*0.7 for a, b in zip(t1, t2)]
+
+# routes
 
 @app.route('/')
 def index():
@@ -69,25 +100,24 @@ def calculator():
 
     return jsonify(results), 200
 
-x = pd.read_pickle("statics/datas/result.pickle")
-t1=x['jd_money'].values.tolist()
-t2=x['solatium_request'].values.tolist()
-x['jd_solatium_predict']=[b*0.8 if a>=b else a*0.7 for a,b in zip(t1,t2)]
 
 @app.route('/charts')
 def chartTest():
     keywords = ['扶養', '憂鬱']
-    url_jdReportHist = jdReportHist(x,'judgement',*keywords)
-    url_jdReportHistGaussian = jdReportHistGaussian(x,'judgement',*keywords)
-    url_jdReportHistRealPredict = jdReportHistRealPredict(x,'judgement',*keywords)
-    url_jdReportScatterRealPredict = jdReportScatterRealPredict(x,'judgement','植物人','死亡')
+    url_jdReportHist = jdReportHist(x, 'judgement', *keywords)
+    url_jdReportHistGaussian = jdReportHistGaussian(x, 'judgement', *keywords)
+    url_jdReportHistRealPredict = jdReportHistRealPredict(
+        x, 'judgement', *keywords)
+    url_jdReportScatterRealPredict = jdReportScatterRealPredict(
+        x, 'judgement', '植物人', '死亡')
 
     return render_template('charts.html',
-                        jdReportHist = url_jdReportHist,
-                        jdReportHistGaussian = url_jdReportHistGaussian,
-                        jdReportHistRealPredict = url_jdReportHistRealPredict,
-                        jdReportScatterRealPredict = url_jdReportScatterRealPredict
-                        )
+                           jdReportHist=url_jdReportHist,
+                           jdReportHistGaussian=url_jdReportHistGaussian,
+                           jdReportHistRealPredict=url_jdReportHistRealPredict,
+                           jdReportScatterRealPredict=url_jdReportScatterRealPredict
+                           )
+
 
 @app.errorhandler(404)
 def not_found(error):
