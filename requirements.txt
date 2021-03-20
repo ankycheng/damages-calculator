@@ -15,7 +15,7 @@ ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.14.1
 jieba==0.39
-Jinja2==2.10.1
+Jinja2==2.11.3
 jupyter-client==5.3.1
 jupyter-core==4.5.0
 kiwisolver==1.1.0
